@@ -1,0 +1,27 @@
+name: Housing price prediciton Project Deployment
+
+on:
+  workflow_run:
+    workflows: ["House price perdiction Docker build."]
+    types:
+      - completed
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      #- name: Download artifact
+        #uses: actions/download-artifact@v4
+        #with:
+          #name: version
+
+      #- name: Read version
+        #run: echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+               
+      - name: Pull the  docker image which build on ci.ymal
+        run: |
+          sudo docker pull ${{ secrets.DOCKERHUB_UNAME }}/housing_api:${{vars.VERSION}}
+
+      - name: Run Housing api image
+        run: |
+          sudo docker run -d -p ${{vars.HOUSING_PORT}}:${{vars.HOUSING_API_PORT}} ${{ secrets.DOCKERHUB_UNAME }}/housing_api:${{vars.VERSION}}
+          
