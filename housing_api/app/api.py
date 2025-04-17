@@ -33,7 +33,9 @@ def health() -> dict:
 
 
 
-example_input ={'Id': 226,
+example_input ={
+     "inputs": [
+         {'Id': 226,
      'MSSubClass': 160,
      'MSZoning': 'RM',
      'LotFrontage': 21.0,
@@ -76,8 +78,8 @@ example_input ={'Id': 226,
      'HeatingQC': 'TA',
      'CentralAir': 'Y',
      'Electrical': 'SBrkr',
-     '1stFlrSF': 630,
-     '2ndFlrSF': 672,
+     'firstFlrSF': 630,
+     'secondFlrSF': 672,
      'LowQualFinSF': 0,
      'GrLivArea': 1302,
      'BsmtFullBath': 0,
@@ -102,7 +104,7 @@ example_input ={'Id': 226,
      'WoodDeckSF': 0,
      'OpenPorchSF': 0,
      'EnclosedPorch': 0,
-     '3SsnPorch': 0,
+     'thirdSsnPorch': 0,
      'ScreenPorch': 0,
      'PoolArea': 0,
      'PoolQC': "nan",
@@ -114,6 +116,8 @@ example_input ={'Id': 226,
      'SaleType': 'COD',
      'SaleCondition': 'Abnorml',
     }
+    ]}
+
 
 
 @api_router.post("/predict", response_model=schemas.PredictionResults, status_code=200)

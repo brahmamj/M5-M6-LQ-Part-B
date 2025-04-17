@@ -23,6 +23,8 @@ def make_prediction(*, input_data: Union[pd.DataFrame, dict]) -> dict:
     """Make a prediction using a saved model """
     
     validated_data, errors = validate_inputs(input_df = pd.DataFrame(input_data))
+    print(validated_data)
+    print(errors)
     
     #validated_data = validated_data.reindex(columns = ['dteday', 'season', 'hr', 'holiday', 'weekday', 'workingday', 
     #                                                   'weathersit', 'temp', 'atemp', 'hum', 'windspeed', 'yr', 'mnth'])
@@ -84,8 +86,8 @@ if __name__ == "__main__":
      'HeatingQC': 'TA',
      'CentralAir': 'Y',
      'Electrical': 'SBrkr',
-     '1stFlrSF': 630,
-     '2ndFlrSF': 672,
+     'firstFlrSF': 630,
+     'secondFlrSF': 672,
      'LowQualFinSF': 0,
      'GrLivArea': 1302,
      'BsmtFullBath': 0,
@@ -110,7 +112,7 @@ if __name__ == "__main__":
      'WoodDeckSF': 0,
      'OpenPorchSF': 0,
      'EnclosedPorch': 0,
-     '3SsnPorch': 0,
+     'thirdSsnPorch': 0,
      'ScreenPorch': 0,
      'PoolArea': 0,
      'PoolQC': "nan",
